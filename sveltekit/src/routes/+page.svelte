@@ -15,6 +15,7 @@
         box-sizing: border-box;
         padding: 0;
         margin: 0;
+        background-color: #202124;
     }
 
     .parent {

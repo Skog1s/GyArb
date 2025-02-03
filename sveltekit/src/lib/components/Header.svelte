@@ -1,30 +1,242 @@
 <script>
+    function changeSideBar() {}
 
+    function changeView() {}
+
+    function refresh() {}
 </script>
 
-<header>
-    <button id="menuBtn">&equiv;</button>
+<nav class="navWrapper">
+    <section class="navBar">
+        <div class="col-1">
+            <aside class="menuBtn">
+                <img src="/images/menu.svg" alt="menuBtn" />
+            </aside>
+            <aside class="keepLogo">
+                <img src="/images/logo.png" alt="logo" />
+            </aside>
+            <span class="text">Keep</span>
+        </div>
 
-</header>
+        <div class="col-2">
+            <div class="searchContainer">
+                <form class="searchBar">
+                    <search class="inputContainer">
+                        <input
+                            class="input"
+                            placeholder="Search"
+                        />
+                    </search>
+                    <button
+                        class="clearBtn"
+                        aria-label="Clear Search"
+                        type="button"
+                    >
+                        <img src="/images/close.svg" alt="X" />
+                    </button>
+                    <button class="searchBtn">
+                        <img src="/images/search.svg" alt="search" />
+                    </button>
+                </form>
+            </div>
+            <div class="btnContainer">
+                <button
+                    class="refreshBtn"
+                    aria-label="Refresh"
+                    on:click={refresh}>&#160;</button
+                >
+                <button class="viewBtn" aria-label="View" on:click={changeView}
+                ></button>
+                <button class="settingsBtn" aria-label="Settings"></button>
+            </div>
 
-<img src="src/lib/images/logo.png" alt="icon" on:click={closeSidebar}>
- <input type="text" placeholder="Search...">
-
+            <div class="col-3">
+                <div class="appMenu"></div>
+                <div class="userContainer">
+                    <img src="/images/Default_pfp.jpg" alt="pfp" class="userProfile"/>
+                </div>
+            </div>
+        </div>
+    </section>
+</nav>
 
 <style lang="scss">
-header {
-    display: inline-block;
-    width: 100%;
-    height: 3.5rem;
-    background-color: #44474b;
-    margin: 0;
- 
-    #menuBtn {
-   
-        border: none;
-        color: white;
-        background-color: transparent;
-    }
+    //variabler
+    %icons {
+  height: 48px;
+  width: 48px;
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.54;
+  transition: opacity 0.218s linear;
+  position: relative;
+
+  &:hover {
+    opacity: 0.87;
+  }
 }
 
+
+    .navWrapper {
+        padding: 8px 8px;
+        box-shadow: inset 0 -1px 0 0 #5f6368;
+
+        .navBar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .col-1 {
+                min-width: 232px;
+                display: flex;
+                align-items: center;
+                height: 48px;
+
+                .menuBtn {
+                    margin: 0 4px;
+                    padding: 12px;
+                    width: 48px;
+                    height: 48px;
+                }
+
+                .text {
+                    color: rgba(255, 255, 255, 0.87);
+                    font-family: sans-serif;
+                    font-size: 22px;
+                    font-weight: bold;
+                    vertical-align: middle;
+                    top: 0.5px;
+                    line-height: 24px;
+                    padding-left: 8px;
+                    position: relative;
+                }
+            }
+
+            .col-2 {
+                display: flex;
+                justify-content: flex-end;
+                width: 100%;
+                align-items: center;
+
+                @media (max-width: 405px) {
+                    justify-content: start;
+                }
+
+                .searchContainer {
+                    padding-left: 10px;
+                    padding-right: 30px;
+                    width: 100%;
+
+                    @media (max-width: 794px) {
+                        display: none;
+                    }
+
+                    .searchBar {
+                        background: rgba(241, 243, 244, 0.24);
+                        max-width: 722px;
+                        border-radius: 8px;
+                        border: 1px solid transparent;
+                        position: relative;
+
+                        .inputContainer {
+                            margin-left: 54px;
+                            margin-right: 49px;
+
+                            .input {
+                                color: white;
+                                background: transparent;
+                                font-size: 16px;
+                                font-family: sans-serif;
+                                height: 46px;
+                                width: 100%;
+                                border: 0;
+
+                                &::placeholder {
+                                    color: #e8eaed;
+                                    font-weight: 100;
+                                }
+                            }
+                        }
+
+                        .clearBtn {
+                            width: 56px;
+                            height: 46px;
+                            background: none;
+                            border: none;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                        }
+
+                        .searchBtn {
+                            width: 56px;
+                            height: 46px;
+                            background: none;
+                            border: none;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            left: 0;
+                        }
+                    }
+                }
+
+                .btnContainer {
+                    display: flex;
+
+                    .refreshBtn {
+                        @extend %icons;
+                        background-image: url(/images/refresh);
+                    }
+
+                    .viewBtn {
+                        @extend %icons;
+                        background-image: url(/images/view.svg);
+                    }
+
+                    .settingsBtn {
+                        @extend %icons;
+                        background-image: url(/images/settings.svg);
+                    }
+                    @media (max-width: 794px) {
+                        display: block;
+                    }
+                }
+            }
+.col-3 {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0px 4px;
+    padding-left: 28px;
+
+    @media (max-width:405px) {
+        display: none;
+      }
+
+      .appMenu {
+        @extend %icons;
+        background-image: url(/images/apps.svg);
+        position: relative;
+        right: 2px;
+      }
+
+      .userContainer{
+        padding: 4px 6px;
+        display: inline-block;
+
+        .userProfile{
+          border-radius: 50%;
+        height: 32px;
+        width: 32px;
+        margin-bottom: 1px;  
+        }
+        
+      }
+
+}
+
+        }
+    }
 </style>

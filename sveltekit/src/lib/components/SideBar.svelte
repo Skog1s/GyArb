@@ -22,8 +22,8 @@
 
 <style lang="scss">
 aside {
-margin: 0;
- background-color: #44474b;
+ margin: 0;
+ background-color: #202124;
  width: 100%;
  height: 100%;
  
