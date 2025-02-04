@@ -29,8 +29,6 @@ function Create() {
 
 <style lang="scss">
     main{
-        width: 100%;
-        height: 100%;
         background-color: #202124;
     }
 .noteArea {
@@ -38,7 +36,6 @@ function Create() {
     #noteTaker {
         padding: 21px 6px 11px 16px;
         height: 46px;
-        width: 100%;
         background-color: #202124;
         border: 1px solid #5f6368;
         border-radius: 8px;       

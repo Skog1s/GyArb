@@ -10,7 +10,7 @@
     <section class="navBar">
         <div class="col-1">
             <aside class="menuBtn">
-                <img src="/images/menu.svg" alt="menuBtn" />
+                <img src="/images/svg/menu.svg" alt="menuBtn" />
             </aside>
             <aside class="keepLogo">
                 <img src="/images/logo.png" alt="logo" />
@@ -22,20 +22,17 @@
             <div class="searchContainer">
                 <form class="searchBar">
                     <search class="inputContainer">
-                        <input
-                            class="input"
-                            placeholder="Search"
-                        />
+                        <input class="input" placeholder="Search" />
                     </search>
                     <button
                         class="clearBtn"
                         aria-label="Clear Search"
                         type="button"
                     >
-                        <img src="/images/close.svg" alt="X" />
+                        <img src="/images/svg/close.svg" alt="X" />
                     </button>
                     <button class="searchBtn">
-                        <img src="/images/search.svg" alt="search" />
+                        <img src="/images/svg/search.svg" alt="search" />
                     </button>
                 </form>
             </div>
@@ -53,7 +50,11 @@
             <div class="col-3">
                 <div class="appMenu"></div>
                 <div class="userContainer">
-                    <img src="/images/Default_pfp.jpg" alt="pfp" class="userProfile"/>
+                    <img
+                        src="/images/Default_pfp.jpg"
+                        alt="pfp"
+                        class="userProfile"
+                    />
                 </div>
             </div>
         </div>
@@ -63,21 +64,21 @@
 <style lang="scss">
     //variabler
     %icons {
-  height: 48px;
-  width: 48px;
-  background-size: 24px 24px;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.54;
-  transition: opacity 0.218s linear;
-  position: relative;
+        height: 48px;
+        width: 48px;
+        background-size: 24px 24px;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.54;
+        transition: opacity 0.218s linear;
+        position: relative;
 
-  &:hover {
-    opacity: 0.87;
-  }
-}
+        &:hover {
+            opacity: 0.87;
+        }
+    }
 
-
+    //Scss
     .navWrapper {
         padding: 8px 8px;
         box-shadow: inset 0 -1px 0 0 #5f6368;
@@ -86,6 +87,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            //Kolumn 1
 
             .col-1 {
                 min-width: 232px;
@@ -112,6 +115,8 @@
                     position: relative;
                 }
             }
+
+            //Kolumn 2
 
             .col-2 {
                 display: flex;
@@ -187,56 +192,56 @@
 
                     .refreshBtn {
                         @extend %icons;
-                        background-image: url(/images/refresh);
+                        background-image: url(/images/svg/refresh);
                     }
 
                     .viewBtn {
                         @extend %icons;
-                        background-image: url(/images/view.svg);
+                        background-image: url(/images/svg/view.svg);
                     }
 
                     .settingsBtn {
                         @extend %icons;
-                        background-image: url(/images/settings.svg);
+                        background-image: url(/images/svg/settings.svg);
                     }
                     @media (max-width: 794px) {
                         display: block;
                     }
                 }
             }
-.col-3 {
-    display: flex;
-    align-items: center;
-    height: 48px;
-    padding: 0px 4px;
-    padding-left: 28px;
 
-    @media (max-width:405px) {
-        display: none;
-      }
+            //Kolumn 3
 
-      .appMenu {
-        @extend %icons;
-        background-image: url(/images/apps.svg);
-        position: relative;
-        right: 2px;
-      }
+            .col-3 {
+                display: flex;
+                align-items: center;
+                height: 48px;
+                padding: 0px 4px;
+                padding-left: 28px;
 
-      .userContainer{
-        padding: 4px 6px;
-        display: inline-block;
+                @media (max-width: 405px) {
+                    display: none;
+                }
 
-        .userProfile{
-          border-radius: 50%;
-        height: 32px;
-        width: 32px;
-        margin-bottom: 1px;  
-        }
-        
-      }
+                .appMenu {
+                    @extend %icons;
+                    background-image: url(/images/svg/apps.svg);
+                    position: relative;
+                    right: 2px;
+                }
 
-}
+                .userContainer {
+                    padding: 4px 6px;
+                    display: inline-block;
 
+                    .userProfile {
+                        border-radius: 50%;
+                        height: 32px;
+                        width: 32px;
+                        margin-bottom: 1px;
+                    }
+                }
+            }
         }
     }
 </style>
