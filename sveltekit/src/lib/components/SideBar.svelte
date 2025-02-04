@@ -1,14 +1,5 @@
 <script>
 
-//Variabler
-const modalContainer = document.getElementsByClassName("modalContainer");
-const modal = document.getElementsByClassName("modal");
-
-// Modalfunktioner
-function openModal() {
-    
-}
-
 
 </script>
 
@@ -92,7 +83,7 @@ function openModal() {
             background-color: #202124;
         }
     }
-
+    
     &.close {
         width: 80px;
 
@@ -116,6 +107,7 @@ function openModal() {
                 border-radius: 50%;
             }
         }
+
     }
 
     .object {
@@ -149,7 +141,7 @@ function openModal() {
             text-overflow: ellipsis;
             white-space: nowrap;
         }
-
+        
         &.active {
             background-color: #41331c;
         }
@@ -157,8 +149,10 @@ function openModal() {
         &:hover:not(.active) {
             background-color: #28292c;
         }
+            
     }
 }
+
 
 .modalContainer {
     position: fixed;
