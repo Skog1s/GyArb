@@ -9,7 +9,7 @@ if (mysqli_connect_errno())
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-// This SQL statement selects ALL from the table 'Locations'
+// This SQL statement selects ALL from the table 'NoteStorage'
 $sql = "SELECT * FROM NoteStorage";
 
 // Executes the SQL statement and puts results into $res

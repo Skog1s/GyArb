@@ -1,9 +1,24 @@
 <script>
-    function changeSideBar() {}
+    
+    function changeSideBar() {
+        
+
+    }
 
     function changeView() {}
 
     function refresh() {}
+
+
+    //Cancel Search funktion
+    let inputField;
+    let newFieldValue = '';
+
+    const onInput = (event) => {
+        inputField.value = '';
+    }
+    
+
 </script>
 
 <nav class="navWrapper">
@@ -22,12 +37,12 @@
             <div class="searchContainer">
                 <form class="searchBar">
                     <search class="inputContainer">
-                        <input class="input" placeholder="Search" />
+                        <input class="input" placeholder="Search" type="text" bind:this={inputField}/>
                     </search>
                     <button
                         class="clearBtn"
                         aria-label="Clear Search"
-                        type="button"
+                        on:click={onInput}
                     >
                         <img src="/images/svg/close.svg" alt="X" />
                     </button>
@@ -192,17 +207,24 @@
 
                     .refreshBtn {
                         @extend %icons;
-                        background-image: url(/images/svg/refresh);
+                        background-image: url(/images/svg/refresh.svg);
+                        background-color: transparent;
+                        
                     }
 
                     .viewBtn {
                         @extend %icons;
                         background-image: url(/images/svg/view.svg);
+                        background-color: transparent;
+                        
+
                     }
 
                     .settingsBtn {
                         @extend %icons;
                         background-image: url(/images/svg/settings.svg);
+                        background-color: transparent;
+
                     }
                     @media (max-width: 794px) {
                         display: block;
