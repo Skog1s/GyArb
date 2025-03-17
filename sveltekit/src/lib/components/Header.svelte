@@ -1,9 +1,4 @@
 <script>
-    
-    function changeSideBar() {
-        
-
-    }
 
     function changeView() {}
 

@@ -1,6 +1,35 @@
 <script>
+    import Note from "./Note.svelte";
+    import { onMount } from "svelte";
 
-var isCheckbox = false;
+    let inputValue = "";
+    let notes = [];
+    let isCheckbox = false;
+    let parent = document.getElementById("noteArea");
+
+    function handleInput(event) {
+        inputValue = event.target.value;
+    }
+
+    function addNote() {
+        if (inputValue.trim() !== "") {
+            let parent = document.getElementById("noteArea");
+            let note = new Note({
+                target: parent,
+                props: {
+                    title: inputValue,
+                },
+            }); 
+            console.log("haj");
+            inputValue = "";
+        }
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === "Enter") {
+            addNote();
+        }
+    }
 
 </script>
 
@@ -9,22 +38,24 @@ var isCheckbox = false;
 <div class="mainContainer">
     <!--Input container-->
 <div class="placeholder">
-    <input class="input" placeholder="Take a note..." type="text"> <!--Skriv funktion för klicket-->
-    <div class="checkIcon"></div> <!--Funktion för att aktivera-->
-    <div class="paintIcon"></div> <!--Funktion för att aktivera-->
+    <input class="input" placeholder="Take a note..." type="text" 
+    bind:value={inputValue}
+    on:input={handleInput}
+    on:keypress={handleKeyPress}
+    on:focusout={addNote}
+    >
 </div>
-
-<!--UI för ny note-->
-<div class="noteMain" hidden>
-    <div class="noteContainer">
-        <div class="noteTitle ph">Title</div>
-        <div class="noteTitle" contenteditable="true" spellcheck="true"></div>
-    </div>
-</div>
-
-</div>
-
 <!--Note Area-->
+<div class="noteArea" id="noteArea">
+    {#each notes as note}
+            <Note {note} />
+        {/each}
+</div>
+
+
+</div>
+
+
 
 
 

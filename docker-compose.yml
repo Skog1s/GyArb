@@ -14,8 +14,7 @@ services:
       - /etc/hostname:/hostname
     depends_on:
       - php
-    environment:
-      - TZ=Europe/Stockholm
+
 
   php:
     build: ./docker/php
@@ -23,8 +22,7 @@ services:
     volumes:
       - ./www:/var/www
       - ./config/php/php.ini:/usr/local/etc/php/php.ini
-  environment:
-      - TZ=Europe/Stockholm
+
 
   mariadb:
     image: mariadb:latest
@@ -66,6 +64,5 @@ services:
     command: "npm run dev -- --host 0.0.0.0"
     volumes:
       - ./sveltekit:/sveltekit
-    environment:
-      - TZ=Europe/Stockholm
+   
     

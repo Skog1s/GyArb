@@ -14,8 +14,9 @@
     * {
         box-sizing: border-box;
         padding: 0;
-        margin: 0;
+        margin: 0px;
         background-color: #202124;
+        
     }
 
     .parent {
@@ -26,7 +27,6 @@
         grid-row-gap: 0px;
         height: 100vh;
         width: 100%;
-        margin: 0;
     }
 
     .header {
