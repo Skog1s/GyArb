@@ -11,10 +11,12 @@
 </div>
 
 <style lang="scss">
+
+
     * {
         box-sizing: border-box;
         padding: 0;
-        margin: 0px;
+        margin: 0;
         background-color: #202124;
         
     }

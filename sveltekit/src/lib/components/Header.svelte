@@ -12,7 +12,7 @@
     const onInput = (event) => {
         inputField.value = '';
     }
-    
+        
 
 </script>
 
