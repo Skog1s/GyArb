@@ -3,6 +3,13 @@
     const dispatch = createEventDispatcher();
     export let title = "";
     export let body = "";
+    export let id = "";
+    
+    function handleDelete() {
+        dispatch('delete', {
+            id: id
+        });
+    }
 </script>
 
 <div class="note">
@@ -11,15 +18,11 @@
             <div role="textbox" class="title">{title}</div>
             <div role="textbox" class="body">{body}</div>
         </div>
-        <div class="actions">
             <button 
-                class="delete-btn" 
-                on:click={() => dispatch('delete')}
-                aria-label="Delete note"
+                on:click={handleDelete}
             >
                 <img src="/images/svg/delete.svg" alt="delete" />
             </button>
-        </div>
     </div>
 </div>
 <style lang="scss">

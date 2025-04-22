@@ -1,36 +1,23 @@
 <?php
+header('Content-Type: application/json');
 
-//create connection
-$con=mysqli_connect("localhost","Notes","Noted","Notes");
+$con = mysqli_connect("localhost","Notes","Noted","Notes");
 
-// Check connection
-if (mysqli_connect_errno())
-{
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+if (mysqli_connect_errno()) {
+    http_response_code(500);
+    echo json_encode(["error" => mysqli_connect_error()]);
+    exit();
 }
 
-// This SQL statement selects ALL from the table 'NoteStorage'
 $sql = "SELECT * FROM NoteStorage";
+$result = $con->query($sql);
+$notes = [];
 
-// Executes the SQL statement and puts results into $res
-$res = $con->query($sql);
-
-// Checks if there's any rows
-if($res->num_rows > 0) {
-
-    // defines $data
-    $data = array();
-
-    // grabs all data and adds them to the $data array
-    while ($row =  $res->fetch_assoc()) {
-        array_push($data, $row);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $notes[] = $row;
     }
-
-    // echo & encode datas
-    echo json_encode($data);
-} else {
-    echo "no data found";
 }
 
-// Close connections
+echo json_encode($notes);
 mysqli_close($con);

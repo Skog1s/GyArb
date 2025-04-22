@@ -2,21 +2,19 @@
     import Note from "./Note.svelte";
     import { slide } from 'svelte/transition';
     import { onMount } from "svelte";
+    import { notes, fetchNotes, createNote, deleteNote } from "../stores/noteStore.js";
 
     let inputValue = "";
     let titleValue = "";
-    let notes = [];
-    let isCheckbox = false;
     let isInputFocused = false;
 
-    function addNote() {
+    async function addNote() {
         if (inputValue.trim() !== "") {
             const newNote = {
                 title: titleValue,
                 body: inputValue,
-                isCheckbox: isCheckbox
             };
-            notes = [...notes, newNote];
+            await createNote(newNote);
             inputValue = ""; 
             titleValue = "";
             isInputFocused = false;
@@ -29,10 +27,15 @@
         }
     }
 
-    function deleteNote(index) {
-        notes = notes.filter((_, i) => i !== index);
+    onMount(async () => {
+        await fetchNotes();
+    });
+
+    async function handleNoteDelete(event) {
+        const { id } = event.detail;
+        await deleteNote(id);
     }
-</script>
+</script>   
 
 <!--Input-->
 
@@ -60,10 +63,12 @@
         >
     </div>
     <div class="noteArea" id="noteArea">
-        {#each notes as note}
-            <Note title={note.title} 
+        {#each $notes as note (note.id)}
+            <Note 
+            id={note.id}
+            title={note.title} 
             body={note.body}
-            on:delete={() => deleteNote(index)}
+            on:delete={handleNoteDelete}
             />
         {/each}
     </div>
@@ -81,11 +86,13 @@
         gap: 16px;
         padding: 16px;
         margin-top: 32px;
+
     }
     
     @media (max-width: 600px) {
         .noteArea {
             grid-template-columns: 1fr;
+            padding: 16px;
         }
     }
 .input-container {

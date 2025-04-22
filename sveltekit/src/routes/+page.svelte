@@ -39,5 +39,9 @@
     }
     .main {
         grid-area: 2 / 2 / 6 / 5;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        padding: 0 16px;
     }
 </style>
