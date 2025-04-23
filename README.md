@@ -1,55 +1,38 @@
-# Docker-compose LEMP
-## Inkluderar
-- nginx 
-- SvelteKit -> localhost
-- php -> /api/
-- mariadb -> mariadb
-- phpmyadmin -> localhost:8080
-- composer
+# sv
 
-## HowTo
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-### SvelteKit
-SvelteKit-projekt skapas i katalogen **sveltekit**
-```console
-cd sveltekit
-npm create svelte@latest .
-npm i
+## Creating a project
+
+If you're seeing this, you've probably already done this step. Congrats!
+
+```bash
+# create a new project in the current directory
+npx sv create
+
+# create a new project in my-app
+npx sv create my-app
 ```
-### API med php
-Backend skrivet i php skall ligga i
 
-    /www/public/api
-### Starta servern (containern) med
-    docker compose up -d
-### Stoppa servern (containern) med
-    docker compose down
+## Developing
 
-### Logga SvelteKit till terminalen
-Tyvärr loggas inte fel från Sveltekit till terminlalen.
-Öppna en ny terminal och skriv:
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-````console
-docker logs -f <Namnet på node-containern>
-````
-### Serverns url
-    localhost
-### phpmyadmin
-    localhost:8080
-### Anslut till MariaDB med php
+```bash
+npm run dev
 
-````php
-<?php
-    // Definierar konstanter med användarinformation.
-    define ('DB_USER', 'userName'); // Användare i MariaDB
-    define ('DB_PASSWORD', '12345');
-    define ('DB_HOST', 'mariadb');
-    define ('DB_NAME', 'dbName');   // Databasen som anslutning skall ske till
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
 
-    // Skapar en anslutning till MariaDB och databasen dbName
-    $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8';
-    $db = new PDO($dsn, DB_USER, DB_PASSWORD);
-?> // Ej nödvändigt att avslut "ren" php med ?>
-````
-### ToDo
-    Stöd för https, TLS (ssl).
+## Building
+
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
